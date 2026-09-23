@@ -308,12 +308,12 @@
         <a href="#sobre">Sobre</a>
         <a href="#atuacao">Atuação</a>
         <a href="#projetos">Portfólio</a>
-        <a href="#curriculo">Currículo (CV)</a>
+        <a href="javascript:void(0)" onclick="openCvModal()">Currículo (CV)</a>
         <a href="#competencias">Competências</a>
         <a href="#contato">Contato</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn-nav-cv" href="#curriculo" onclick="openCvModal()"><span>📄</span> Ver CV</a>
+        <button type="button" class="btn-nav-cv" onclick="openCvModal()"><span>📄</span> Ver CV</button>
         <a class="btn-nav-download" href="curriculo.pdf" download="Curriculo_Weverton_Castelo.pdf" title="Baixar Currículo em PDF">Baixar CV 📥</a>
       </div>
     </div>
@@ -962,7 +962,7 @@
       </div>
       <div class="modal-body">
         <div class="pdf-embed-wrapper">
-          <iframe id="pdfIframe" src="curriculo.pdf" title="Currículo Oficial de Weverton Castelo"></iframe>
+          <iframe id="pdfIframe" src="about:blank" data-src="curriculo.pdf" title="Currículo Oficial de Weverton Castelo"></iframe>
         </div>
       </div>
       <div class="modal-footer">
@@ -1059,9 +1059,14 @@
       });
     });
 
-    // MODAL DE CV
+    // MODAL DE CV (SEM ALTERAR URL OU PULAR A PÁGINA)
     const cvModalOverlay = document.getElementById('cvModalOverlay');
-    function openCvModal() {
+    const pdfIframe = document.getElementById('pdfIframe');
+    function openCvModal(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (pdfIframe && (pdfIframe.src === 'about:blank' || !pdfIframe.src.includes('curriculo.pdf'))) {
+        pdfIframe.src = pdfIframe.getAttribute('data-src') || 'curriculo.pdf';
+      }
       cvModalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1076,6 +1081,12 @@
         closeCvModal();
       }
     });
+
+    // Garante que o visitante NUNCA seja jogado para o final da página ao abrir o link
+    if (window.location.hash === '#curriculo') {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+    }
   </script>
 </body>
 </html>
