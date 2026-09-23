@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="Portfólio & Currículo de Weverton Castelo Branco — Engenharia de Software, Backend, Cibersegurança, Dados e IA.">
   <title>Weverton Castelo | Engenharia de Software, Portfólio & CV</title>
   <script>document.documentElement.classList.add('js')</script>
@@ -37,7 +37,7 @@
     .js .page-loader.done{opacity:0;visibility:hidden;pointer-events:none}
     .loader-inner{width:min(560px,calc(100% - 48px))}
     .loader-top{display:flex;align-items:end;justify-content:space-between;margin-bottom:17px}
-    .loader-brand{font:700 1rem Space Grotesk;letter-spacing:.12em}
+    .loader-brand{font:700 1.1rem Space Grotesk;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
     .loader-brand span{color:var(--cyan)}
     .loader-value{font:600 clamp(2.5rem,8vw,5.5rem) Space Grotesk;line-height:.8;letter-spacing:-.06em;color:var(--text);font-variant-numeric:tabular-nums}
     .loader-track{height:3px;background:rgba(159,190,225,.17);overflow:hidden}
@@ -49,21 +49,27 @@
     .noise{position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
     .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
 
-    /* NAVBAR */
-    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,9,20,.85);backdrop-filter:blur(14px);z-index:100}
-    .brand{font:700 1.15rem Space Grotesk;letter-spacing:.02em;display:flex;align-items:center;gap:6px}
-    .brand span{color:var(--cyan)}
+    /* NAVBAR CORRIGIDA & BEM POSICIONADA */
+    .nav{height:76px;position:sticky;top:0;background:rgba(5,9,20,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);z-index:100;display:flex;align-items:center;padding:0 24px}
+    .nav-inner{width:100%;max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    
+    /* LOGO WC TECH MODERNO */
+    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+    .brand-badge{background:rgba(57,217,255,.12);border:1px solid rgba(57,217,255,.4);color:var(--cyan);font:800 .9rem Space Grotesk;padding:3px 9px;border-radius:4px;box-shadow:0 0 14px rgba(57,217,255,.15);letter-spacing:.05em}
+    .brand-text{font:700 1.18rem Space Grotesk;color:#fff;letter-spacing:.06em}
+    .brand-text span{color:var(--cyan)}
+
     .navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.88rem;font-weight:600}
     .navlinks a{transition:color .2s}
     .navlinks a:hover{color:var(--text)}
-    .nav-actions{display:flex;align-items:center;gap:12px}
-    .btn-nav-cv{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border:1px solid rgba(57,217,255,.4);border-radius:4px;color:var(--cyan);font-weight:700;font-size:.82rem;background:rgba(57,217,255,.06);transition:.2s}
+    .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .btn-nav-cv{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border:1px solid rgba(57,217,255,.45);border-radius:4px;color:var(--cyan);font-weight:700;font-size:.84rem;background:rgba(57,217,255,.08);transition:.2s}
     .btn-nav-cv:hover{background:var(--cyan);color:#03101a;box-shadow:0 0 16px rgba(57,217,255,.3)}
-    .btn-nav-download{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;background:#10b981;color:#04150e;font-weight:800;font-size:.82rem;border-radius:4px;transition:.2s}
+    .btn-nav-download{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;background:#10b981;color:#04150e;font-weight:800;font-size:.84rem;border-radius:4px;transition:.2s}
     .btn-nav-download:hover{transform:translateY(-2px);box-shadow:0 0 16px rgba(16,185,129,.4)}
 
     /* HERO */
-    .hero{min-height:690px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:64px;padding:60px 0 85px}
+    .hero{min-height:660px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:60px;padding:50px 0 80px}
     .eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
     .eyebrow:before{content:"";width:34px;height:1px;background:var(--cyan)}
     h1,h2,h3,h4{font-family:Space Grotesk,sans-serif;line-height:1.08;margin:0}
@@ -77,17 +83,17 @@
     .btn.outline-cyan{border-color:rgba(57,217,255,.5);color:var(--cyan);background:rgba(57,217,255,.05)}
     .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(57,217,255,.16)}
 
-    /* PORTRAIT */
-    .portrait{position:relative;min-height:510px;border:1px solid var(--line);background:#07111f;box-shadow:30px 30px 80px rgba(0,0,0,.35);overflow:hidden;border-radius:6px}
-    .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 58%;filter:saturate(.88) contrast(1.04)}
-    .portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(3,8,18,.94) 100%),linear-gradient(90deg,rgba(57,217,255,.08),transparent 55%)}
-    .portrait-tag{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-    .portrait-name{font:700 1.25rem Space Grotesk}
+    /* PORTRAIT PROFISSIONAL (RESPONSIVO E NUNCA SOME) */
+    .portrait{position:relative;width:100%;max-width:480px;min-height:480px;height:100%;aspect-ratio:4/5;border:1px solid var(--line);background:#07111f;box-shadow:0 25px 70px rgba(0,0,0,.45);overflow:hidden;border-radius:8px;margin:0 auto}
+    .portrait picture,.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+    .portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(3,8,18,.94) 100%),linear-gradient(90deg,rgba(57,217,255,.08),transparent 55%);pointer-events:none}
+    .portrait-tag{position:absolute;z-index:2;left:20px;right:20px;bottom:20px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+    .portrait-name{font:700 1.25rem Space Grotesk;color:#fff}
     .portrait-role{font-size:.78rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
-    .portrait-badge{width:44px;height:44px;border:1px solid rgba(57,217,255,.5);display:grid;place-items:center;color:var(--cyan);font-weight:800;background:rgba(5,9,20,.6)}
+    .portrait-badge{width:44px;height:44px;border:1px solid rgba(57,217,255,.5);display:grid;place-items:center;color:var(--cyan);font-weight:800;background:rgba(5,9,20,.7);border-radius:4px}
 
     /* SECTIONS */
-    section{padding:100px 0;border-top:1px solid var(--line)}
+    section{padding:95px 0;border-top:1px solid var(--line)}
     .section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;margin-bottom:50px}
     .index{font:700 .78rem Space Grotesk;color:var(--cyan);letter-spacing:.15em}
     .section-head h2{font-size:clamp(2.2rem,4.8vw,4.2rem);letter-spacing:-.045em}
@@ -95,7 +101,7 @@
 
     /* CARDS */
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{min-height:260px;padding:28px;border:1px solid var(--line);background:rgba(11,18,33,.62);position:relative;overflow:hidden;transition:.3s;border-radius:4px}
+    .card{min-height:260px;padding:28px;border:1px solid var(--line);background:rgba(11,18,33,.62);position:relative;overflow:hidden;transition:.3s;border-radius:6px}
     .card:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--cyan);transition:.3s}
     .card:hover{transform:translateY(-5px);border-color:rgba(57,217,255,.35)}
     .card:hover:after{width:100%}
@@ -112,10 +118,13 @@
     .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
     .project{border:1px solid var(--line);background:var(--surface-card);overflow:hidden;transition:.35s;border-radius:6px;display:flex;flex-direction:column}
     .project:hover{transform:translateY(-6px);border-color:rgba(57,217,255,.45);box-shadow:0 18px 45px rgba(0,0,0,.45)}
-    .project-media{aspect-ratio:16/10;overflow:hidden;background:#07111f;position:relative}
-    .project-media img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}
+    
+    /* IMAGENS RESPONSIVAS QUE NUNCA DESAPARECEM */
+    .project-media{position:relative;width:100%;aspect-ratio:16/10;min-height:220px;overflow:hidden;background:#07111f}
+    .project-media picture,.project-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:.5s}
     .project:hover img{transform:scale(1.03)}
     .project-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,9,20,.85));pointer-events:none}
+    
     .project-body{padding:26px;display:flex;flex-direction:column;flex-grow:1}
     .project-kicker{font-size:.72rem;font-weight:800;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
     .project h3{font-size:1.42rem;margin:10px 0}
@@ -150,8 +159,16 @@
     .cv-col{display:flex;flex-direction:column;gap:30px}
     .cv-block{border:1px solid var(--line);background:rgba(11,18,33,.55);padding:24px;border-radius:6px}
     .cv-block-title{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px}
-    .cv-block-title svg{width:18px;height:18px;color:var(--cyan)}
+    .cv-block-title svg{width:20px;height:20px;color:var(--cyan);flex-shrink:0}
     .cv-text{font-size:.92rem;color:var(--muted);line-height:1.75;margin:0}
+
+    /* FORMAÇÃO ACADÊMICA SEM BOLINHA AZUL SOBREPOSTA */
+    .academic-card{padding:18px 20px;background:rgba(57,217,255,.05);border:1px solid rgba(57,217,255,.22);border-radius:6px}
+    .academic-badge-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .badge-degree{font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);background:rgba(57,217,255,.12);padding:3px 9px;border-radius:3px}
+    .badge-status{font-size:.76rem;color:var(--accent);font-weight:700}
+    .academic-title{font-size:1.12rem;font-weight:700;color:#fff;margin:0 0 6px}
+    .academic-inst{font-size:.88rem;color:var(--muted)}
     
     /* DISC METRICS */
     .disc-list{display:flex;flex-direction:column;gap:14px}
@@ -162,10 +179,10 @@
     .disc-bar-bg{height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
     .disc-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:4px}
 
-    /* TIMELINE */
-    .timeline{display:flex;flex-direction:column;gap:18px}
-    .timeline-item{position:relative;padding-left:22px;border-left:2px solid rgba(57,217,255,.3)}
-    .timeline-item:before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+    /* TIMELINE ALINHADA E PERFEITA */
+    .timeline{display:flex;flex-direction:column;gap:20px;padding-left:4px}
+    .timeline-item{position:relative;padding-left:26px;border-left:2px solid rgba(57,217,255,.25)}
+    .timeline-item:before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
     .timeline-role{font-size:.98rem;font-weight:700;color:var(--text)}
     .timeline-company{font-size:.85rem;color:var(--cyan);font-weight:600}
     .timeline-date{font-size:.76rem;color:var(--muted);margin-bottom:8px}
@@ -195,6 +212,8 @@
     /* FOOTER */
     footer{padding:28px 0 38px;color:#71859d;font-size:.82rem}
     .footer-in{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:28px}
+    
+    /* REVEAL ANIMATIONS (COM FALLBACK SEGURO PARA MOBILE) */
     .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
     .reveal.show{opacity:1;transform:none}
 
@@ -212,11 +231,11 @@
     .pdf-embed-wrapper{width:100%;height:68vh;min-height:480px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#050914}
     .pdf-embed-wrapper iframe{width:100%;height:100%;border:0}
 
-    /* RESPONSIVE */
+    /* RESPONSIVIDADE TOTAL PARA CELULAR E TABLET */
     @media(max-width:920px){
       .navlinks{display:none}
-      .hero{grid-template-columns:1fr;gap:45px;padding-top:40px;min-height:auto}
-      .portrait{max-width:540px;min-height:480px;margin:auto}
+      .hero{grid-template-columns:1fr;gap:45px;padding-top:30px;min-height:auto}
+      .portrait{max-width:440px;min-height:440px;margin:20px auto 0}
       .section-head,.contact{grid-template-columns:1fr;gap:26px}
       .cards,.projects,.cv-grid{grid-template-columns:1fr}
       .card{min-height:220px}
@@ -225,20 +244,34 @@
       .cv-container{padding:22px}
       .cv-action-bar{flex-direction:column;align-items:stretch}
     }
+    
+    @media(max-width:768px){
+      /* GARANTE QUE NO MOBILE TUDO APAREÇA INSTANTANEAMENTE SEM FICAR ESCONDIDO */
+      .reveal{opacity:1!important;transform:none!important;transition:none!important}
+      .project-media{min-height:220px}
+      .portrait{min-height:400px}
+      .btn-nav-download{display:none} /* Esconde o botão duplicado no mobile para não espremer o logo */
+    }
+
     @media(max-width:540px){
-      .wrap{width:min(calc(100% - 24px),var(--max))}
-      .nav{height:68px}
-      h1{font-size:3.2rem}
-      .hero{padding:38px 0 60px}
+      .wrap{width:min(calc(100% - 30px),var(--max))}
+      .nav{height:70px;padding:0 16px}
+      .brand-text{font-size:1.05rem}
+      .brand-badge{padding:2px 7px;font-size:.82rem}
+      h1{font-size:3rem}
+      .hero{padding:28px 0 50px}
       .intro{font-size:1rem}
       .actions .btn{width:100%}
-      .section-head h2{font-size:2.3rem}
-      .contact h2{font-size:2.8rem}
+      .section-head h2{font-size:2.2rem}
+      .contact h2{font-size:2.6rem}
       .socials{grid-template-columns:repeat(3,1fr)}
       .footer-in{flex-direction:column}
-      .portfolio-filters{overflow-x:auto;padding-bottom:8px}
-      .pdf-embed-wrapper{height:55vh}
+      .portfolio-filters{overflow-x:auto;padding-bottom:8px;flex-wrap:nowrap}
+      .filter-btn{white-space:nowrap;flex-shrink:0}
+      .pdf-embed-wrapper{height:55vh;min-height:350px}
+      .cv-header-title h3{font-size:1.6rem}
     }
+
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       *,*:before,*:after{animation:none!important;transition:none!important}
@@ -251,7 +284,10 @@
   <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Carregando portfólio e currículo">
     <div class="loader-inner">
       <div class="loader-top">
-        <div class="loader-brand">WC<span>.</span>TECH</div>
+        <div class="loader-brand">
+          <span class="brand-badge">WC</span>
+          <span style="color:#fff;font-weight:700">TECH</span>
+        </div>
         <div class="loader-value"><span id="loaderValue">0</span>%</div>
       </div>
       <div class="loader-track"><span class="loader-bar" id="loaderBar"></span></div>
@@ -261,10 +297,13 @@
 
   <div class="noise" aria-hidden="true"></div>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR CORRIGIDA E BEM POSICIONADA -->
   <header class="nav">
-    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
-      <a class="brand" href="#inicio">WC<span>.</span>TECH</a>
+    <div class="nav-inner">
+      <a class="brand" href="#inicio">
+        <span class="brand-badge">WC</span>
+        <span class="brand-text">TECH</span>
+      </a>
       <nav class="navlinks" aria-label="Navegação principal">
         <a href="#sobre">Sobre</a>
         <a href="#atuacao">Atuação</a>
@@ -295,7 +334,10 @@
         </div>
       </div>
       <aside class="portrait reveal" aria-label="Foto de Weverton Castelo">
-        <img src="assets/weverton-red-v2.png" alt="Retrato profissional de Weverton Castelo com camiseta preta">
+        <picture>
+          <source srcset="assets/weverton-red-v2.webp" type="image/webp">
+          <img src="assets/weverton-red-v2.png" alt="Retrato profissional de Weverton Castelo com camiseta preta">
+        </picture>
         <div class="portrait-tag">
           <div>
             <div class="portrait-name">Weverton Castelo Branco</div>
@@ -346,7 +388,7 @@
       </div>
     </section>
 
-    <!-- PROJETOS & PORTFÓLIO EXPANDIDO -->
+    <!-- PROJETOS & PORTFÓLIO EXPANDIDO COM FOTOS 100% OTIMIZADAS -->
     <section id="projetos">
       <div class="wrap">
         <div class="section-head reveal">
@@ -365,13 +407,16 @@
           <button class="filter-btn" data-filter="clones">Clones Educacionais (3)</button>
         </div>
 
-        <!-- GRID DOS 11 PROJETOS -->
+        <!-- GRID DOS 11 PROJETOS COM PICTURE WEBP E PNG -->
         <div class="projects" id="projectsGrid">
 
           <!-- 1. Nutricionista (BioNutri OS) -->
           <article class="project reveal" data-category="saas">
             <div class="project-media">
-              <img src="assets/sistema-nutricionista.png" alt="Painel do sistema BioNutri para nutricionistas" loading="lazy">
+              <picture>
+                <source srcset="assets/sistema-nutricionista.webp" type="image/webp">
+                <img src="assets/sistema-nutricionista.png" alt="Painel do sistema BioNutri para nutricionistas">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -389,7 +434,10 @@
           <!-- 2. Prospecção de Leads / Radar -->
           <article class="project reveal" data-category="saas">
             <div class="project-media">
-              <img src="assets/prospeccao-leads.png" alt="Painel do sistema de prospecção de leads e radar de oportunidades" loading="lazy">
+              <picture>
+                <source srcset="assets/prospeccao-leads.webp" type="image/webp">
+                <img src="assets/prospeccao-leads.png" alt="Painel do sistema de prospecção de leads e radar de oportunidades">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -407,7 +455,10 @@
           <!-- 3. Programa Mercado & PDV -->
           <article class="project reveal" data-category="saas">
             <div class="project-media">
-              <img src="assets/sistema-mercado.png" alt="Painel do sistema para mercado com controle de estoque e PDV" loading="lazy">
+              <picture>
+                <source srcset="assets/sistema-mercado.webp" type="image/webp">
+                <img src="assets/sistema-mercado.png" alt="Painel do sistema para mercado com controle de estoque e PDV">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -424,7 +475,10 @@
           <!-- 4. Programa Restaurante & Mesas -->
           <article class="project reveal" data-category="saas">
             <div class="project-media">
-              <img src="assets/sistema-restaurante.png" alt="Painel do sistema para restaurante com mapa de mesas" loading="lazy">
+              <picture>
+                <source srcset="assets/sistema-restaurante.webp" type="image/webp">
+                <img src="assets/sistema-restaurante.png" alt="Painel do sistema para restaurante com mapa de mesas">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -441,7 +495,10 @@
           <!-- 5. Programa Farmácia -->
           <article class="project reveal" data-category="saas">
             <div class="project-media">
-              <img src="assets/sistema-farmacia.png" alt="Painel do sistema para farmácia com controle de lotes" loading="lazy">
+              <picture>
+                <source srcset="assets/sistema-farmacia.webp" type="image/webp">
+                <img src="assets/sistema-farmacia.png" alt="Painel do sistema para farmácia com controle de lotes">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -458,7 +515,10 @@
           <!-- 6. Automação Corporativa & Scripting -->
           <article class="project reveal" data-category="tech">
             <div class="project-media">
-              <img src="assets/projeto-automacao.png" alt="Tela de scripts e pipelines de automação corporativa" loading="lazy">
+              <picture>
+                <source srcset="assets/projeto-automacao.webp" type="image/webp">
+                <img src="assets/projeto-automacao.png" alt="Tela de scripts e pipelines de automação corporativa">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -475,7 +535,10 @@
           <!-- 7. Engenharia de Dados & SQL -->
           <article class="project reveal" data-category="tech">
             <div class="project-media">
-              <img src="assets/projeto-dados.png" alt="Modelagem de bancos de dados relacionais e dashboards de BI" loading="lazy">
+              <picture>
+                <source srcset="assets/projeto-dados.webp" type="image/webp">
+                <img src="assets/projeto-dados.png" alt="Modelagem de bancos de dados relacionais e dashboards de BI">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -492,7 +555,10 @@
           <!-- 8. Soluções com Inteligência Artificial -->
           <article class="project reveal" data-category="tech">
             <div class="project-media">
-              <img src="assets/projeto-ia.png" alt="Aplicações integradas com modelos de IA generativa" loading="lazy">
+              <picture>
+                <source srcset="assets/projeto-ia.webp" type="image/webp">
+                <img src="assets/projeto-ia.png" alt="Aplicações integradas com modelos de IA generativa">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -509,7 +575,10 @@
           <!-- 9. Clone Google -->
           <article class="project reveal" data-category="clones">
             <div class="project-media">
-              <img src="assets/clone-google.png" alt="Tela do projeto educacional de mecanismo de busca" loading="lazy">
+              <picture>
+                <source srcset="assets/clone-google.webp" type="image/webp">
+                <img src="assets/clone-google.png" alt="Tela do projeto educacional de mecanismo de busca">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -526,7 +595,10 @@
           <!-- 10. Clone YouTube -->
           <article class="project reveal" data-category="clones">
             <div class="project-media">
-              <img src="assets/clone-youtube.png" alt="Tela do projeto educacional de plataforma de vídeos" loading="lazy">
+              <picture>
+                <source srcset="assets/clone-youtube.webp" type="image/webp">
+                <img src="assets/clone-youtube.png" alt="Tela do projeto educacional de plataforma de vídeos">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -543,7 +615,10 @@
           <!-- 11. Clone Facebook -->
           <article class="project reveal" data-category="clones">
             <div class="project-media">
-              <img src="assets/clone-facebook.png" alt="Tela do projeto educacional de rede social" loading="lazy">
+              <picture>
+                <source srcset="assets/clone-facebook.webp" type="image/webp">
+                <img src="assets/clone-facebook.png" alt="Tela do projeto educacional de rede social">
+              </picture>
               <div class="project-overlay"></div>
             </div>
             <div class="project-body">
@@ -688,16 +763,19 @@
 
             <!-- COLUNA DIREITA -->
             <div class="cv-col">
-              <!-- FORMAÇÃO ACADÊMICA -->
+              <!-- FORMAÇÃO ACADÊMICA SEM BOLINHA AZUL SOBREPOSTA -->
               <div class="cv-block">
                 <div class="cv-block-title">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                   Formação Acadêmica
                 </div>
-                <div class="timeline-item" style="border:0;padding-left:0">
-                  <div class="timeline-role">Bacharelado em Engenharia de Software</div>
-                  <div class="timeline-company">Estácio de Sá</div>
-                  <div class="timeline-date">Status: Em andamento</div>
+                <div class="academic-card">
+                  <div class="academic-badge-row">
+                    <span class="badge-degree">Graduação</span>
+                    <span class="badge-status">● Em andamento</span>
+                  </div>
+                  <h4 class="academic-title">Bacharelado em Engenharia de Software</h4>
+                  <div class="academic-inst">Estácio de Sá · Ensino Superior</div>
                 </div>
               </div>
 
@@ -841,7 +919,7 @@
           <a class="btn primary" href="https://wa.me/5592992920233" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Weverton pelo WhatsApp">Conversar no WhatsApp ↗</a>
           
           <div class="socials" aria-label="Redes sociais e contatos de Weverton">
-            <a class="social" href="https://wctech.web.app/" target="_blank" rel="noopener noreferrer" title="Site Oficial WCTech">
+            <a class="social" href="https://portfoliowev.vercel.app/" target="_blank" rel="noopener noreferrer" title="Site Oficial WCTech">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3Z"/></svg>
             </a>
             <a class="social" href="https://wa.me/5592992920233" target="_blank" rel="noopener noreferrer" title="WhatsApp">
@@ -868,7 +946,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="wrap footer-in">
-      <span>© <span id="year"></span> Weverton Castelo Branco · WC Tech Pro</span>
+      <span>© <span id="year"></span> Weverton Castelo Branco · WC TECH</span>
       <span>Manaus, Amazonas · Brasil</span>
     </div>
   </footer>
@@ -911,7 +989,7 @@
     let pageReady = document.readyState === 'complete';
     let loaderFinished = false;
     const loaderStart = performance.now();
-    const loaderDuration = 1800;
+    const loaderDuration = 1400;
 
     const paintLoader = value => {
       loadProgress = Math.min(100, Math.round(value));
@@ -926,7 +1004,7 @@
       setTimeout(() => {
         pageLoader.classList.add('done');
         document.body.classList.remove('is-loading');
-      }, 350);
+      }, 300);
     };
 
     const animateLoader = now => {
@@ -940,22 +1018,26 @@
 
     window.addEventListener('load', () => { pageReady = true; }, { once: true });
     requestAnimationFrame(animateLoader);
-    setTimeout(finishLoader, 2800); // safety fallback
+    setTimeout(finishLoader, 2400); // safety fallback
 
     // ANO NO RODAPÉ
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // INTERSECTION OBSERVER REVEAL
+    // INTERSECTION OBSERVER REVEAL (COM SUPORTE DIRETO A MOBILE)
     const items = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('show');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: .08 });
-    items.forEach(item => observer.observe(item));
+    if (window.innerWidth > 768) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('show');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: .08 });
+      items.forEach(item => observer.observe(item));
+    } else {
+      items.forEach(item => item.classList.add('show'));
+    }
 
     // FILTRO INTERATIVO DE PROJETOS
     const filterBtns = document.querySelectorAll('.filter-btn');
