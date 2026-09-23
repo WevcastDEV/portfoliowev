@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portfólio & Currículo de Weverton Castelo Branco — Engenharia de Software, Backend, Cibersegurança, Dados e IA.">
+  <title>Weverton Castelo | Engenharia de Software, Portfólio & CV</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071122'/%3E%3Cpath d='M15 18l9 29 8-18 8 18 9-29' fill='none' stroke='%2339d9ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#050914;
+      --surface:#0b1221;
+      --surface-card:rgba(11,18,33,.78);
+      --text:#eef6ff;
+      --muted:#9baec5;
+      --cyan:#39d9ff;
+      --cyan-glow:rgba(57,217,255,.2);
+      --blue:#5577ff;
+      --accent:#10b981;
+      --line:rgba(159,190,225,.16);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 Manrope,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer}
+    .js body.is-loading{overflow:hidden}
+
+    /* LOADER */
+    .page-loader{display:none}
+    .js .page-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#050914;transition:opacity .8s cubic-bezier(.22,1,.36,1),visibility .8s ease}
+    .js .page-loader.done{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-inner{width:min(560px,calc(100% - 48px))}
+    .loader-top{display:flex;align-items:end;justify-content:space-between;margin-bottom:17px}
+    .loader-brand{font:700 1rem Space Grotesk;letter-spacing:.12em}
+    .loader-brand span{color:var(--cyan)}
+    .loader-value{font:600 clamp(2.5rem,8vw,5.5rem) Space Grotesk;line-height:.8;letter-spacing:-.06em;color:var(--text);font-variant-numeric:tabular-nums}
+    .loader-track{height:3px;background:rgba(159,190,225,.17);overflow:hidden}
+    .loader-bar{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 18px rgba(57,217,255,.7);will-change:width}
+    .loader-label{margin-top:13px;color:var(--muted);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase}
+
+    /* BACKGROUND & GRID */
+    body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 75% 8%,rgba(55,117,255,.18),transparent 28%),radial-gradient(circle at 14% 45%,rgba(57,217,255,.08),transparent 28%),radial-gradient(circle at 85% 80%,rgba(16,185,129,.06),transparent 30%)}
+    .noise{position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+
+    /* NAVBAR */
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,9,20,.85);backdrop-filter:blur(14px);z-index:100}
+    .brand{font:700 1.15rem Space Grotesk;letter-spacing:.02em;display:flex;align-items:center;gap:6px}
+    .brand span{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.88rem;font-weight:600}
+    .navlinks a{transition:color .2s}
+    .navlinks a:hover{color:var(--text)}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .btn-nav-cv{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border:1px solid rgba(57,217,255,.4);border-radius:4px;color:var(--cyan);font-weight:700;font-size:.82rem;background:rgba(57,217,255,.06);transition:.2s}
+    .btn-nav-cv:hover{background:var(--cyan);color:#03101a;box-shadow:0 0 16px rgba(57,217,255,.3)}
+    .btn-nav-download{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;background:#10b981;color:#04150e;font-weight:800;font-size:.82rem;border-radius:4px;transition:.2s}
+    .btn-nav-download:hover{transform:translateY(-2px);box-shadow:0 0 16px rgba(16,185,129,.4)}
+
+    /* HERO */
+    .hero{min-height:690px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:64px;padding:60px 0 85px}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:34px;height:1px;background:var(--cyan)}
+    h1,h2,h3,h4{font-family:Space Grotesk,sans-serif;line-height:1.08;margin:0}
+    h1{font-size:clamp(3.4rem,7.5vw,6.5rem);letter-spacing:-.06em;margin:20px 0 24px;max-width:850px}
+    h1 .outline{color:transparent;-webkit-text-stroke:1.5px rgba(238,246,255,.82)}
+    .intro{max-width:630px;color:var(--muted);font-size:1.12rem}
+    .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border:1px solid var(--line);font-weight:800;font-size:.88rem;letter-spacing:.02em;transition:.25s;border-radius:4px}
+    .btn.primary{background:var(--cyan);color:#03101a;border-color:var(--cyan)}
+    .btn.accent{background:#10b981;color:#03170e;border-color:#10b981}
+    .btn.outline-cyan{border-color:rgba(57,217,255,.5);color:var(--cyan);background:rgba(57,217,255,.05)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(57,217,255,.16)}
+
+    /* PORTRAIT */
+    .portrait{position:relative;min-height:510px;border:1px solid var(--line);background:#07111f;box-shadow:30px 30px 80px rgba(0,0,0,.35);overflow:hidden;border-radius:6px}
+    .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 58%;filter:saturate(.88) contrast(1.04)}
+    .portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(3,8,18,.94) 100%),linear-gradient(90deg,rgba(57,217,255,.08),transparent 55%)}
+    .portrait-tag{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+    .portrait-name{font:700 1.25rem Space Grotesk}
+    .portrait-role{font-size:.78rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
+    .portrait-badge{width:44px;height:44px;border:1px solid rgba(57,217,255,.5);display:grid;place-items:center;color:var(--cyan);font-weight:800;background:rgba(5,9,20,.6)}
+
+    /* SECTIONS */
+    section{padding:100px 0;border-top:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;margin-bottom:50px}
+    .index{font:700 .78rem Space Grotesk;color:var(--cyan);letter-spacing:.15em}
+    .section-head h2{font-size:clamp(2.2rem,4.8vw,4.2rem);letter-spacing:-.045em}
+    .section-head p{color:var(--muted);max-width:640px;margin:16px 0 0}
+
+    /* CARDS */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{min-height:260px;padding:28px;border:1px solid var(--line);background:rgba(11,18,33,.62);position:relative;overflow:hidden;transition:.3s;border-radius:4px}
+    .card:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--cyan);transition:.3s}
+    .card:hover{transform:translateY(-5px);border-color:rgba(57,217,255,.35)}
+    .card:hover:after{width:100%}
+    .card .num{font:600 .75rem Space Grotesk;color:var(--cyan)}
+    .card h3{font-size:1.45rem;margin:50px 0 13px}
+    .card p{color:var(--muted);margin:0;font-size:.94rem}
+
+    /* PORTFOLIO FILTERS & GRID */
+    .portfolio-filters{display:flex;gap:10px;margin-bottom:34px;flex-wrap:wrap}
+    .filter-btn{padding:10px 20px;border:1px solid var(--line);background:rgba(11,18,33,.6);color:var(--muted);font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;transition:.25s;border-radius:4px}
+    .filter-btn:hover{color:var(--text);border-color:rgba(57,217,255,.4)}
+    .filter-btn.active{background:var(--cyan);color:#03101a;border-color:var(--cyan);box-shadow:0 0 18px rgba(57,217,255,.3)}
+    
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .project{border:1px solid var(--line);background:var(--surface-card);overflow:hidden;transition:.35s;border-radius:6px;display:flex;flex-direction:column}
+    .project:hover{transform:translateY(-6px);border-color:rgba(57,217,255,.45);box-shadow:0 18px 45px rgba(0,0,0,.45)}
+    .project-media{aspect-ratio:16/10;overflow:hidden;background:#07111f;position:relative}
+    .project-media img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}
+    .project:hover img{transform:scale(1.03)}
+    .project-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,9,20,.85));pointer-events:none}
+    .project-body{padding:26px;display:flex;flex-direction:column;flex-grow:1}
+    .project-kicker{font-size:.72rem;font-weight:800;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+    .project h3{font-size:1.42rem;margin:10px 0}
+    .project p{font-size:.92rem;color:var(--muted);margin:0 0 20px;flex-grow:1}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+    .tags span{font-size:.72rem;padding:4px 9px;border:1px solid var(--line);color:#bdcce0;border-radius:3px;background:rgba(255,255,255,.02)}
+    .project-actions{display:flex;gap:10px;margin-top:auto}
+    .btn-project{padding:9px 18px;border:1px solid var(--line);font-size:.82rem;font-weight:700;color:var(--text);background:rgba(255,255,255,.04);border-radius:4px;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+    .btn-project:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(57,217,255,.08)}
+    .btn-project.primary{background:var(--cyan);color:#03101a;border-color:var(--cyan)}
+    .btn-project.primary:hover{opacity:.9}
+    .note{margin-top:25px;color:#7f93aa;font-size:.82rem}
+
+    /* CURRICULO SECTION */
+    .cv-section{background:linear-gradient(180deg,transparent 0%,rgba(11,18,33,.45) 50%,transparent 100%)}
+    .cv-action-bar{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;background:rgba(11,18,33,.8);border:1px solid var(--line);padding:18px 24px;border-radius:6px;align-items:center;justify-content:space-between}
+    .cv-action-info{display:flex;align-items:center;gap:12px}
+    .cv-action-info span{font-size:.9rem;color:var(--muted)}
+    .cv-action-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* CV BENTO CONTAINER */
+    .cv-container{border:1px solid var(--line);background:rgba(8,14,27,.85);border-radius:8px;padding:36px;box-shadow:0 25px 60px rgba(0,0,0,.5)}
+    .cv-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;border-bottom:1px solid var(--line);padding-bottom:30px;margin-bottom:32px;flex-wrap:wrap}
+    .cv-header-title h3{font-size:2.1rem;letter-spacing:-.03em;color:#fff}
+    .cv-header-title p{color:var(--cyan);font-weight:700;margin:6px 0 12px;font-size:1.02rem}
+    .cv-contacts-bar{display:flex;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:.85rem}
+    .cv-contacts-bar span,.cv-contacts-bar a{display:inline-flex;align-items:center;gap:6px}
+    .cv-contacts-bar a{color:var(--text);border-bottom:1px dotted var(--muted)}
+    .cv-contacts-bar a:hover{color:var(--cyan);border-color:var(--cyan)}
+    
+    .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+    .cv-col{display:flex;flex-direction:column;gap:30px}
+    .cv-block{border:1px solid var(--line);background:rgba(11,18,33,.55);padding:24px;border-radius:6px}
+    .cv-block-title{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px}
+    .cv-block-title svg{width:18px;height:18px;color:var(--cyan)}
+    .cv-text{font-size:.92rem;color:var(--muted);line-height:1.75;margin:0}
+    
+    /* DISC METRICS */
+    .disc-list{display:flex;flex-direction:column;gap:14px}
+    .disc-item{display:flex;flex-direction:column;gap:4px}
+    .disc-info{display:flex;justify-content:space-between;font-size:.84rem;font-weight:700}
+    .disc-info span:first-child{color:#cad8e8}
+    .disc-info span:last-child{color:var(--cyan)}
+    .disc-bar-bg{height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+    .disc-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:4px}
+
+    /* TIMELINE */
+    .timeline{display:flex;flex-direction:column;gap:18px}
+    .timeline-item{position:relative;padding-left:22px;border-left:2px solid rgba(57,217,255,.3)}
+    .timeline-item:before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+    .timeline-role{font-size:.98rem;font-weight:700;color:var(--text)}
+    .timeline-company{font-size:.85rem;color:var(--cyan);font-weight:600}
+    .timeline-date{font-size:.76rem;color:var(--muted);margin-bottom:8px}
+    .timeline-desc{font-size:.86rem;color:var(--muted);margin:0;line-height:1.6}
+
+    /* TECH TAGS IN CV */
+    .cv-tags-group{margin-bottom:16px}
+    .cv-tags-title{font-size:.82rem;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+    .cv-tag-list{display:flex;flex-wrap:wrap;gap:6px}
+    .cv-tag{font-size:.75rem;padding:4px 9px;background:rgba(57,217,255,.07);border:1px solid rgba(57,217,255,.2);color:#cfe5f9;border-radius:3px}
+
+    /* SKILLS LIST SECTION */
+    .skills{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .skill{padding:15px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-weight:700;color:#cad8e8}
+
+    /* CONTACT */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:60px}
+    .contact h2{font-size:clamp(3rem,7vw,6.8rem);letter-spacing:-.06em;max-width:880px}
+    .contact h2 span{color:var(--cyan)}
+    .contact-side{padding-bottom:12px;color:var(--muted)}
+    .contact-side .btn{margin-top:22px;width:100%}
+    .socials{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:18px}
+    .social{min-height:52px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:#a9bdd4;transition:.25s;border-radius:4px}
+    .social svg{width:21px;height:21px}
+    .social:hover,.social:focus-visible{color:var(--cyan);border-color:rgba(57,217,255,.5);background:rgba(57,217,255,.07);transform:translateY(-3px);outline:none}
+
+    /* FOOTER */
+    footer{padding:28px 0 38px;color:#71859d;font-size:.82rem}
+    .footer-in{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:28px}
+    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* MODAL WINDOWS */
+    .modal-overlay{position:fixed;inset:0;background:rgba(3,6,15,.88);backdrop-filter:blur(8px);z-index:9990;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.3s ease}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal-dialog{background:#0a101f;border:1px solid rgba(57,217,255,.3);border-radius:8px;width:min(900px,100%);max-height:92vh;display:flex;flex-direction:column;box-shadow:0 30px 90px rgba(0,0,0,.8);overflow:hidden;transform:scale(.95);transition:.3s cubic-bezier(.16,1,.3,1)}
+    .modal-overlay.active .modal-dialog{transform:scale(1)}
+    .modal-header{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(11,18,33,.8)}
+    .modal-title{font:700 1.2rem Space Grotesk;display:flex;align-items:center;gap:10px}
+    .modal-close{background:transparent;border:0;color:var(--muted);font-size:1.6rem;line-height:1;padding:4px 8px;transition:.2s}
+    .modal-close:hover{color:#fff;transform:rotate(90deg)}
+    .modal-body{padding:24px;overflow-y:auto;flex-grow:1}
+    .modal-footer{padding:16px 24px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:12px;background:rgba(11,18,33,.8)}
+    .pdf-embed-wrapper{width:100%;height:68vh;min-height:480px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#050914}
+    .pdf-embed-wrapper iframe{width:100%;height:100%;border:0}
+
+    /* RESPONSIVE */
+    @media(max-width:920px){
+      .navlinks{display:none}
+      .hero{grid-template-columns:1fr;gap:45px;padding-top:40px;min-height:auto}
+      .portrait{max-width:540px;min-height:480px;margin:auto}
+      .section-head,.contact{grid-template-columns:1fr;gap:26px}
+      .cards,.projects,.cv-grid{grid-template-columns:1fr}
+      .card{min-height:220px}
+      .card h3{margin-top:38px}
+      section{padding:75px 0}
+      .cv-container{padding:22px}
+      .cv-action-bar{flex-direction:column;align-items:stretch}
+    }
+    @media(max-width:540px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .nav{height:68px}
+      h1{font-size:3.2rem}
+      .hero{padding:38px 0 60px}
+      .intro{font-size:1rem}
+      .actions .btn{width:100%}
+      .section-head h2{font-size:2.3rem}
+      .contact h2{font-size:2.8rem}
+      .socials{grid-template-columns:repeat(3,1fr)}
+      .footer-in{flex-direction:column}
+      .portfolio-filters{overflow-x:auto;padding-bottom:8px}
+      .pdf-embed-wrapper{height:55vh}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- LOADING SCREEN -->
+  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Carregando portfólio e currículo">
+    <div class="loader-inner">
+      <div class="loader-top">
+        <div class="loader-brand">WC<span>.</span>TECH</div>
+        <div class="loader-value"><span id="loaderValue">0</span>%</div>
+      </div>
+      <div class="loader-track"><span class="loader-bar" id="loaderBar"></span></div>
+      <div class="loader-label">Carregando experiência & portfólio</div>
+    </div>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+      <a class="brand" href="#inicio">WC<span>.</span>TECH</a>
+      <nav class="navlinks" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#projetos">Portfólio</a>
+        <a href="#curriculo">Currículo (CV)</a>
+        <a href="#competencias">Competências</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn-nav-cv" href="#curriculo" onclick="openCvModal()"><span>📄</span> Ver CV</a>
+        <a class="btn-nav-download" href="curriculo.pdf" download="Curriculo_Weverton_Castelo.pdf" title="Baixar Currículo em PDF">Baixar CV 📥</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="wrap hero" style="border-top:0">
+      <div class="reveal">
+        <div class="eyebrow">Engenharia de Software · Soluções Digitais</div>
+        <h1>Weverton<br><span class="outline">Castelo</span></h1>
+        <p class="intro">Estudante de Engenharia de Software focado em desenvolvimento backend, sistemas web comerciais, automações e cibersegurança.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projetos">Ver Portfólio Completo ↘</a>
+          <button class="btn outline-cyan" onclick="openCvModal()">Visualizar Currículo 📄</button>
+          <a class="btn accent" href="curriculo.pdf" download="Curriculo_Weverton_Castelo.pdf">Baixar CV (PDF) 📥</a>
+          <a class="btn" href="https://wa.me/5592992920233" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp</a>
+        </div>
+      </div>
+      <aside class="portrait reveal" aria-label="Foto de Weverton Castelo">
+        <img src="assets/weverton-red-v2.png" alt="Retrato profissional de Weverton Castelo com camiseta preta">
+        <div class="portrait-tag">
+          <div>
+            <div class="portrait-name">Weverton Castelo Branco</div>
+            <div class="portrait-role">Engenharia de Software · Backend · IA</div>
+          </div>
+          <div class="portrait-badge" aria-hidden="true">WC</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="wrap section-head reveal">
+        <div class="index">01 — SOBRE</div>
+        <div>
+          <h2>Tecnologia com propósito & precisão.</h2>
+          <p>Estudante de Engenharia de Software com formação sólida em desenvolvimento web, backend, arquitetura de bancos de dados relacionais e cibersegurança. Movido por disciplina, pensamento analítico e capacidade de transformar regras de negócio complexas em sistemas ágeis e escaláveis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATUAÇÃO -->
+    <section id="atuacao">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="index">02 — ATUAÇÃO</div>
+          <div>
+            <h2>Pilares de entrega técnica.</h2>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="num">01</div>
+            <h3>Sistemas & Backend</h3>
+            <p>Construção de aplicações completas, APIs REST e lógica de negócios resiliente utilizando Python, Node.js, PHP, C# e PostgreSQL/MySQL.</p>
+          </article>
+          <article class="card reveal">
+            <div class="num">02</div>
+            <h3>Cibersegurança & SOC</h3>
+            <p>Fundamentos práticos de segurança defensiva, análise de logs, correlação de incidentes, detecção de ameaças e frameworks MITRE ATT&CK e NIST.</p>
+          </article>
+          <article class="card reveal">
+            <div class="num">03</div>
+            <h3>Automação & IA</h3>
+            <p>Scripting com Python e PowerShell, automação de processos repetitivos e integração de modelos generativos para elevar a produtividade comercial.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS & PORTFÓLIO EXPANDIDO -->
+    <section id="projetos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="index">03 — PORTFÓLIO COMPLETO</div>
+          <div>
+            <h2>Soluções, Sistemas & Projetos.</h2>
+            <p>Explore todos os projetos desenvolvidos, divididos entre sistemas de gestão para negócios reais, automações empresariais com IA e clones educacionais de alta fidelidade.</p>
+          </div>
+        </div>
+
+        <!-- FILTROS INTERATIVOS -->
+        <div class="portfolio-filters reveal">
+          <button class="filter-btn active" data-filter="all">Todos os Projetos (11)</button>
+          <button class="filter-btn" data-filter="saas">Sistemas de Gestão & SaaS (5)</button>
+          <button class="filter-btn" data-filter="tech">Automação, Dados & IA (3)</button>
+          <button class="filter-btn" data-filter="clones">Clones Educacionais (3)</button>
+        </div>
+
+        <!-- GRID DOS 11 PROJETOS -->
+        <div class="projects" id="projectsGrid">
+
+          <!-- 1. Nutricionista (BioNutri OS) -->
+          <article class="project reveal" data-category="saas">
+            <div class="project-media">
+              <img src="assets/sistema-nutricionista.png" alt="Painel do sistema BioNutri para nutricionistas" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Sistema Comercial SaaS</span><span>★ 5.0</span></div>
+              <h3>BioNutri Enterprise OS</h3>
+              <p>SaaS clínico para gestão nutricional de alta performance: prontuário eletrônico unificado (PEP), antropometria avançada, cálculo GET/VET e cardápios inteligentes.</p>
+              <div class="tags"><span>Next.js</span><span>Firebase</span><span>TypeScript</span><span>TailwindCSS</span><span>PWA</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://wa.me/5592992920233?text=Olá%20Weverton,%20vi%20o%20BioNutri%20no%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer">Solicitar Demonstração ↗</a>
+                <a class="btn-project" href="https://github.com/WevcastDEV/bionutri-os" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Prospecção de Leads / Radar -->
+          <article class="project reveal" data-category="saas">
+            <div class="project-media">
+              <img src="assets/prospeccao-leads.png" alt="Painel do sistema de prospecção de leads e radar de oportunidades" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Inteligência Comercial</span><span>B2B CRM</span></div>
+              <h3>Radar de Oportunidades & CRM</h3>
+              <p>SaaS comercial com captura automatizada de dados no Google Maps, Kanban dinâmico de negociações, score de oportunidade e integração para WhatsApp.</p>
+              <div class="tags"><span>NestJS</span><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Docker</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://wa.me/5592992920233?text=Olá%20Weverton,%20tenho%20interesse%20no%20Radar%20de%20Oportunidades%20CRM" target="_blank" rel="noopener noreferrer">Ver Solução ↗</a>
+                <a class="btn-project" href="https://github.com/WevcastDEV/radar" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Programa Mercado & PDV -->
+          <article class="project reveal" data-category="saas">
+            <div class="project-media">
+              <img src="assets/sistema-mercado.png" alt="Painel do sistema para mercado com controle de estoque e PDV" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Varejo & PDV</span><span>Operação Rápida</span></div>
+              <h3>Sistema de Gestão para Mercados</h3>
+              <p>Frente de caixa (PDV) ágil com controle de código de barras, estoque mínimo automático, precificação, histórico de vendas e fechamento diário de caixa.</p>
+              <div class="tags"><span>React</span><span>Node.js</span><span>SQL</span><span>Estoque</span><span>PDV</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://wa.me/5592992920233?text=Olá%20Weverton,%20gostaria%20de%20conhecer%20o%20Sistema%20para%20Mercado" target="_blank" rel="noopener noreferrer">Conversar ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Programa Restaurante & Mesas -->
+          <article class="project reveal" data-category="saas">
+            <div class="project-media">
+              <img src="assets/sistema-restaurante.png" alt="Painel do sistema para restaurante com mapa de mesas" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Food Service</span><span>Comanda Digital</span></div>
+              <h3>Sistema para Restaurantes & Bares</h3>
+              <p>Mapa interativo de mesas, comanda digital rápida, comunicação direta com a cozinha/KDS, divisão de contas e controle de estoque de insumos.</p>
+              <div class="tags"><span>Next.js</span><span>TailwindCSS</span><span>WebSocket</span><span>Dashboard</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://wa.me/5592992920233?text=Olá%20Weverton,%20vi%20o%20Sistema%20para%20Restaurantes" target="_blank" rel="noopener noreferrer">Conversar ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Programa Farmácia -->
+          <article class="project reveal" data-category="saas">
+            <div class="project-media">
+              <img src="assets/sistema-farmacia.png" alt="Painel do sistema para farmácia com controle de lotes" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Saúde & Inventário</span><span>Controle de Lotes</span></div>
+              <h3>Sistema de Gestão para Farmácias</h3>
+              <p>Controle rigoroso de lotes e datas de validade de medicamentos, cadastro de fornecedores, prescrições médicas e emissão de comprovantes de venda.</p>
+              <div class="tags"><span>TypeScript</span><span>MySQL</span><span>Relatórios</span><span>Validade</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://wa.me/5592992920233?text=Olá%20Weverton,%20quero%20saber%20sobre%20o%20Sistema%20para%20Farmácia" target="_blank" rel="noopener noreferrer">Conversar ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Automação Corporativa & Scripting -->
+          <article class="project reveal" data-category="tech">
+            <div class="project-media">
+              <img src="assets/projeto-automacao.png" alt="Tela de scripts e pipelines de automação corporativa" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Scripting & Infra</span><span>Produtividade</span></div>
+              <h3>Automação Empresarial & Scripting</h3>
+              <p>Desenvolvimento de rotinas automatizadas em Python e PowerShell para extração de relatórios, disparos de cadência segura e sincronização de dados.</p>
+              <div class="tags"><span>Python</span><span>PowerShell</span><span>Regex</span><span>Automação</span><span>Cron</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Ver Códigos no GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Engenharia de Dados & SQL -->
+          <article class="project reveal" data-category="tech">
+            <div class="project-media">
+              <img src="assets/projeto-dados.png" alt="Modelagem de bancos de dados relacionais e dashboards de BI" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Bancos Relacionais</span><span>ETL & Analytics</span></div>
+              <h3>Modelagem de Dados & Consultas SQL</h3>
+              <p>Arquitetura de dados relacionais com normalização em MySQL/PostgreSQL, queries analíticas complexas, índices otimizados e relatórios de métricas comerciais.</p>
+              <div class="tags"><span>MySQL</span><span>SQL</span><span>Prisma ORM</span><span>Data Pipeline</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Ver Repositórios ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Soluções com Inteligência Artificial -->
+          <article class="project reveal" data-category="tech">
+            <div class="project-media">
+              <img src="assets/projeto-ia.png" alt="Aplicações integradas com modelos de IA generativa" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Inteligência Artificial</span><span>LLMs & Agentes</span></div>
+              <h3>Aplicações & Assistentes com IA</h3>
+              <p>Integração de APIs de inteligência artificial generativa, geradores de roteiros de prospecção com IA, atendimento automatizado e engenharia de prompts.</p>
+              <div class="tags"><span>IA Generativa</span><span>Prompt Engineering</span><span>REST APIs</span><span>Node.js</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Explorar no GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. Clone Google -->
+          <article class="project reveal" data-category="clones">
+            <div class="project-media">
+              <img src="assets/clone-google.png" alt="Tela do projeto educacional de mecanismo de busca" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Projeto Educacional</span><span>Mecanismo de Busca</span></div>
+              <h3>Clone do Google Search</h3>
+              <p>Recriação da interface de pesquisa do Google, com sugestões de autocomplete, busca dinâmica e navegação visual de resultados em páginas.</p>
+              <div class="tags"><span>Front-end</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Ver Código Fonte ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. Clone YouTube -->
+          <article class="project reveal" data-category="clones">
+            <div class="project-media">
+              <img src="assets/clone-youtube.png" alt="Tela do projeto educacional de plataforma de vídeos" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Projeto Educacional</span><span>Streaming de Vídeo</span></div>
+              <h3>Clone do YouTube</h3>
+              <p>Plataforma de catálogo de vídeos com menu lateral retrátil, sistema de filtros por categorias, thumbnails responsivas e reprodutor interativo.</p>
+              <div class="tags"><span>Front-end</span><span>Vídeos</span><span>Responsivo</span><span>UX/UI</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Ver Código Fonte ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. Clone Facebook -->
+          <article class="project reveal" data-category="clones">
+            <div class="project-media">
+              <img src="assets/clone-facebook.png" alt="Tela do projeto educacional de rede social" loading="lazy">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>Projeto Educacional</span><span>Rede Social</span></div>
+              <h3>Clone do Facebook</h3>
+              <p>Interface completa de rede social: feed com postagens, barra de histórias (stories), coluna de contatos online, reações e grupos.</p>
+              <div class="tags"><span>Front-end</span><span>Rede Social</span><span>Interatividade</span><span>CSS Grid</span></div>
+              <div class="project-actions">
+                <a class="btn-project primary" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">Ver Código Fonte ↗</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <p class="note reveal">Nota: Os clones de plataformas foram desenvolvidos estritamente com finalidade didática e de estudo de interface.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CURRÍCULO (CV) COMPLETO -->
+    <section id="curriculo" class="cv-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="index">04 — CURRÍCULO PROFISSIONAL</div>
+          <div>
+            <h2>Trajetória, Formação & Competências.</h2>
+            <p>Conheça meu perfil profissional, competências técnicas em engenharia de software e cibersegurança, ou faça o download direto do documento oficial em PDF.</p>
+          </div>
+        </div>
+
+        <!-- BARRA DE AÇÃO RÁPIDA DO CV -->
+        <div class="cv-action-bar reveal">
+          <div class="cv-action-info">
+            <span style="font-size:1.5rem">📄</span>
+            <div>
+              <strong style="color:#fff;display:block">Currículo Oficial de Weverton Castelo Branco</strong>
+              <span>Atualizado · Formato PDF de 2 Páginas (71 KB)</span>
+            </div>
+          </div>
+          <div class="cv-action-btns">
+            <a class="btn accent" href="curriculo.pdf" download="Curriculo_Weverton_Castelo.pdf">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Baixar Currículo (PDF)
+            </a>
+            <button class="btn outline-cyan" onclick="openCvModal()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Abrir no Visualizador PDF
+            </button>
+            <a class="btn" href="curriculo.pdf" target="_blank" rel="noopener noreferrer">
+              Abrir em Nova Aba ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- BENTO CARD DO CURRÍCULO RENDERIZADO -->
+        <div class="cv-container reveal">
+          <!-- CABEÇALHO DO CV -->
+          <div class="cv-header">
+            <div class="cv-header-title">
+              <h3>Weverton Castelo Branco Pinheiro</h3>
+              <p>Estudante de Engenharia de Software | Desenvolvimento Backend · Python · PHP · C# · SQL · Cibersegurança</p>
+              <div class="cv-contacts-bar">
+                <span>📍 Manaus – AM</span>
+                <span>📞 (92) 98489-2332</span>
+                <span>✉️ weverton.engineer@hotmail.com</span>
+                <a href="https://linkedin.com/in/weverton-castelo-branco-005b39355" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRADE EM 2 COLUNAS -->
+          <div class="cv-grid">
+            <!-- COLUNA ESQUERDA -->
+            <div class="cv-col">
+              <!-- RESUMO PROFISSIONAL -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  Resumo Profissional
+                </div>
+                <p class="cv-text">
+                  Estudante de Engenharia de Software com experiência profissional formal em ambientes de alta demanda e foco em resultados. Em transição estruturada para a área de Tecnologia, com formação prática em desenvolvimento de software (PHP, Python, C#, JavaScript, Node.js), desenvolvimento web (HTML, CSS), banco de dados relacional (MySQL, SQL) e fundamentos de cibersegurança e SOC. Possui conhecimento em ferramentas e práticas de segurança da informação, incluindo análise de logs, correlação de dados e frameworks como MITRE ATT&CK e NIST. Busca oportunidade de estágio ou posição júnior para contribuir com entregas reais enquanto aprofunda sua carreira no setor.
+                </p>
+              </div>
+
+              <!-- OBJETIVO PROFISSIONAL -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                  Objetivo Profissional
+                </div>
+                <p class="cv-text">
+                  Contribuir como <strong>Estagiário ou Desenvolvedor Júnior</strong> em empresas de tecnologia, aplicando conhecimentos em desenvolvimento de software, backend, web e cibersegurança para auxiliar na construção de soluções eficientes. Comprometido com aprendizado contínuo, disciplina e entrega de valor desde o primeiro dia.
+                </p>
+              </div>
+
+              <!-- PERFIL COMPORTAMENTAL DISC -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Perfil Comportamental (DISC — Projetista)
+                </div>
+                <p class="cv-text" style="margin-bottom:16px">
+                  Classificação predominante como <strong>Projetista</strong> — indicado para funções que exigem autonomia, iniciativa e foco na entrega de soluções.
+                </p>
+                <div class="disc-list">
+                  <div class="disc-item">
+                    <div class="disc-info"><span>Perfil Competitivo & Qualidade</span><span>84%</span></div>
+                    <div class="disc-bar-bg"><div class="disc-bar-fill" style="width:84%"></div></div>
+                  </div>
+                  <div class="disc-item">
+                    <div class="disc-info"><span>Abertura ao Risco & Inovação</span><span>80%</span></div>
+                    <div class="disc-bar-bg"><div class="disc-bar-fill" style="width:80%"></div></div>
+                  </div>
+                  <div class="disc-item">
+                    <div class="disc-info"><span>Orientação a Resultados</span><span>71%</span></div>
+                    <div class="disc-bar-bg"><div class="disc-bar-fill" style="width:71%"></div></div>
+                  </div>
+                  <div class="disc-item">
+                    <div class="disc-info"><span>Foco em Execução & Tarefas</span><span>69%</span></div>
+                    <div class="disc-bar-bg"><div class="disc-bar-fill" style="width:69%"></div></div>
+                  </div>
+                  <div class="disc-item">
+                    <div class="disc-info"><span>Autonomia & Perfil Empreendedor</span><span>64%</span></div>
+                    <div class="disc-bar-bg"><div class="disc-bar-fill" style="width:64%"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- IDIOMAS -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Idiomas
+                </div>
+                <p class="cv-text">
+                  • <strong>Inglês:</strong> Técnico (leitura ágil de documentação, código e materiais técnicos)<br>
+                  • <strong>Espanhol:</strong> Técnico
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUNA DIREITA -->
+            <div class="cv-col">
+              <!-- FORMAÇÃO ACADÊMICA -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  Formação Acadêmica
+                </div>
+                <div class="timeline-item" style="border:0;padding-left:0">
+                  <div class="timeline-role">Bacharelado em Engenharia de Software</div>
+                  <div class="timeline-company">Estácio de Sá</div>
+                  <div class="timeline-date">Status: Em andamento</div>
+                </div>
+              </div>
+
+              <!-- COMPETÊNCIAS TÉCNICAS DETALHADAS -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  Competências Técnicas
+                </div>
+                <div class="cv-tags-group">
+                  <div class="cv-tags-title">Linguagens & Backend</div>
+                  <div class="cv-tag-list">
+                    <span class="cv-tag">Python</span>
+                    <span class="cv-tag">PHP</span>
+                    <span class="cv-tag">C#</span>
+                    <span class="cv-tag">JavaScript</span>
+                    <span class="cv-tag">Node.js</span>
+                    <span class="cv-tag">TypeScript</span>
+                  </div>
+                </div>
+                <div class="cv-tags-group">
+                  <div class="cv-tags-title">Bancos de Dados & Web</div>
+                  <div class="cv-tag-list">
+                    <span class="cv-tag">MySQL</span>
+                    <span class="cv-tag">SQL</span>
+                    <span class="cv-tag">HTML5</span>
+                    <span class="cv-tag">CSS3</span>
+                    <span class="cv-tag">TailwindCSS</span>
+                    <span class="cv-tag">Next.js / React</span>
+                  </div>
+                </div>
+                <div class="cv-tags-group">
+                  <div class="cv-tags-title">Automação & Scripting</div>
+                  <div class="cv-tag-list">
+                    <span class="cv-tag">Python</span>
+                    <span class="cv-tag">PowerShell</span>
+                    <span class="cv-tag">Regex</span>
+                    <span class="cv-tag">Git & GitHub</span>
+                    <span class="cv-tag">Docker</span>
+                  </div>
+                </div>
+                <div class="cv-tags-group">
+                  <div class="cv-tags-title">Cibersegurança & SOC (Conceitos & Estudo)</div>
+                  <div class="cv-tag-list">
+                    <span class="cv-tag">SOC</span>
+                    <span class="cv-tag">Detecção & Resposta a Incidentes</span>
+                    <span class="cv-tag">DFIR</span>
+                    <span class="cv-tag">Análise de Logs</span>
+                    <span class="cv-tag">MITRE ATT&CK</span>
+                    <span class="cv-tag">NIST</span>
+                    <span class="cv-tag">Splunk</span>
+                    <span class="cv-tag">Microsoft Sentinel</span>
+                    <span class="cv-tag">SentinelOne</span>
+                    <span class="cv-tag">CrowdStrike</span>
+                    <span class="cv-tag">YARA</span>
+                    <span class="cv-tag">Sigma</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EXPERIÊNCIA PROFISSIONAL -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Experiência Profissional
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-role">Consultor de Vendas</div>
+                    <div class="timeline-company">Promil Promotora de Vendas Ltda</div>
+                    <div class="timeline-date">06/2025 – Atual · Manaus, AM</div>
+                    <p class="timeline-desc">Atuação em ambiente de alta demanda com metas mensuráveis, argumentação analítica e acompanhamento de indicadores de desempenho.</p>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-role">Atendente de Lojas & Atendente</div>
+                    <div class="timeline-company">Emerson Ximenes da Silva Serviços</div>
+                    <div class="timeline-date">08/2022 – 06/2025 · Manaus, AM</div>
+                    <p class="timeline-desc">Suporte operacional ao fluxo de atendimento, gestão de demandas simultâneas, controle de processos internos e comunicação ágil sob pressão.</p>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-role">Assessor de Atendimento</div>
+                    <div class="timeline-company">Grupo Casas Bahia S.A.</div>
+                    <div class="timeline-date">08/2021 – 02/2022 · Manaus, AM</div>
+                    <p class="timeline-desc">Comunicação consultiva e trabalho em equipe em ambiente corporativo estruturado de varejo de grande porte com métricas definidas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CURSOS E CERTIFICAÇÕES -->
+              <div class="cv-block">
+                <div class="cv-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                  Cursos & Certificações
+                </div>
+                <ul class="cv-text" style="padding-left:18px;margin:0">
+                  <li><strong>Engenharia PHP:</strong> Fundamentos, Arquitetura + 5 Projetos — Udemy (85h)</li>
+                  <li><strong>Desenvolvimento Web (HTML, CSS, JavaScript)</strong> — Fundação Bradesco</li>
+                  <li><strong>Fundamentos de TI: Hardware e Software</strong> — Fundação Bradesco</li>
+                  <li><strong>Imersão Inteligência Artificial na Prática</strong> — Daxus (8h)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETÊNCIAS -->
+    <section id="competencias">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="index">05 — COMPETÊNCIAS CENTRAIS</div>
+          <div>
+            <h2>Aprendizado que vira prática.</h2>
+            <p>Uma base em constante expansão unindo técnica de desenvolvimento, engenharia de software e visão analítica de negócios.</p>
+          </div>
+        </div>
+        <div class="skills reveal">
+          <span class="skill">Python</span>
+          <span class="skill">Desenvolvimento Backend</span>
+          <span class="skill">Engenharia de Software</span>
+          <span class="skill">SQL & Modelagem Relacional</span>
+          <span class="skill">Cibersegurança & SOC</span>
+          <span class="skill">PHP & C#</span>
+          <span class="skill">Node.js & TypeScript</span>
+          <span class="skill">Next.js & React</span>
+          <span class="skill">Automação com PowerShell</span>
+          <span class="skill">Docker & Firebase</span>
+          <span class="skill">Git & CI/CD</span>
+          <span class="skill">Inteligência Artificial Prática</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="wrap contact reveal">
+        <h2>Vamos criar algo <span>relevante?</span></h2>
+        <div class="contact-side">
+          <p>Estou aberto a oportunidades profissionais (Estágio / Júnior), conexões e projetos desafiadores.</p>
+          <a class="btn primary" href="https://wa.me/5592992920233" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Weverton pelo WhatsApp">Conversar no WhatsApp ↗</a>
+          
+          <div class="socials" aria-label="Redes sociais e contatos de Weverton">
+            <a class="social" href="https://wctech.web.app/" target="_blank" rel="noopener noreferrer" title="Site Oficial WCTech">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3Z"/></svg>
+            </a>
+            <a class="social" href="https://wa.me/5592992920233" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/><path d="M8.5 8.2c.4 3 2.2 4.8 5.2 5.3l1.2-1.1 1.9.9c-.2 1.3-1.1 2.1-2.4 2.1-4 0-7.8-3.8-7.8-7.8 0-1.3.8-2.2 2.1-2.4l.9 1.9-1.1 1.1Z"/></svg>
+            </a>
+            <a class="social" href="https://www.instagram.com/wctechn_/" target="_blank" rel="noopener noreferrer" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="social" href="https://www.youtube.com/@weverton.engineer" target="_blank" rel="noopener noreferrer" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 12c0-2.4-.3-4.6-.7-5.4-.3-.7-.8-1.2-1.5-1.4C17.5 4.8 15 4.7 12 4.7s-5.5.1-6.8.5c-.7.2-1.2.7-1.5 1.4C3.3 7.4 3 9.6 3 12s.3 4.6.7 5.4c.3.7.8 1.2 1.5 1.4 1.3.4 3.8.5 6.8.5s5.5-.1 6.8-.5c.7-.2 1.2-.7 1.5-1.4.4-.8.7-3 .7-5.4Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="social" href="https://github.com/WevcastDEV" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.91-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.34 9.34 0 0 1 12 6.95c.85 0 1.7.12 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"/></svg>
+            </a>
+            <a class="social" href="https://www.linkedin.com/in/weverton-castelo-branco-005b39355/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 8.4H2.1V21h3.1V8.4ZM3.7 3A1.8 1.8 0 1 0 3.7 6.6 1.8 1.8 0 0 0 3.7 3ZM21.9 13.8c0-3.8-2-5.6-4.7-5.6-2.2 0-3.1 1.2-3.7 2V8.4h-3.1V21h3.1v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21h3.1l.8-7.2Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-in">
+      <span>© <span id="year"></span> Weverton Castelo Branco · WC Tech Pro</span>
+      <span>Manaus, Amazonas · Brasil</span>
+    </div>
+  </footer>
+
+  <!-- MODAL DE VISUALIZAÇÃO DO CURRÍCULO (PDF) -->
+  <div class="modal-overlay" id="cvModalOverlay" onclick="if(event.target===this)closeCvModal()">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📄</span> Currículo Oficial — Weverton Castelo Branco
+        </div>
+        <button class="modal-close" onclick="closeCvModal()" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="pdf-embed-wrapper">
+          <iframe id="pdfIframe" src="curriculo.pdf" title="Currículo Oficial de Weverton Castelo"></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn primary" href="curriculo.pdf" download="Curriculo_Weverton_Castelo.pdf">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar PDF Agora
+        </a>
+        <a class="btn" href="curriculo.pdf" target="_blank" rel="noopener noreferrer">
+          Abrir em Nova Aba ↗
+        </a>
+        <button class="btn" onclick="closeCvModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // LOADER
+    document.body.classList.add('is-loading');
+    const pageLoader = document.getElementById('pageLoader');
+    const loaderBar = document.getElementById('loaderBar');
+    const loaderValue = document.getElementById('loaderValue');
+    let loadProgress = 0;
+    let pageReady = document.readyState === 'complete';
+    let loaderFinished = false;
+    const loaderStart = performance.now();
+    const loaderDuration = 1800;
+
+    const paintLoader = value => {
+      loadProgress = Math.min(100, Math.round(value));
+      loaderBar.style.width = loadProgress + '%';
+      loaderValue.textContent = loadProgress;
+    };
+
+    const finishLoader = () => {
+      if (loaderFinished) return;
+      loaderFinished = true;
+      paintLoader(100);
+      setTimeout(() => {
+        pageLoader.classList.add('done');
+        document.body.classList.remove('is-loading');
+      }, 350);
+    };
+
+    const animateLoader = now => {
+      const elapsed = now - loaderStart;
+      const linear = Math.min(elapsed / loaderDuration, 1);
+      const eased = 1 - Math.pow(1 - linear, 2.2);
+      paintLoader(Math.min(95, eased * 100));
+      if (linear >= 1 && pageReady) finishLoader();
+      else requestAnimationFrame(animateLoader);
+    };
+
+    window.addEventListener('load', () => { pageReady = true; }, { once: true });
+    requestAnimationFrame(animateLoader);
+    setTimeout(finishLoader, 2800); // safety fallback
+
+    // ANO NO RODAPÉ
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // INTERSECTION OBSERVER REVEAL
+    const items = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: .08 });
+    items.forEach(item => observer.observe(item));
+
+    // FILTRO INTERATIVO DE PROJETOS
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.projects .project');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // MODAL DE CV
+    const cvModalOverlay = document.getElementById('cvModalOverlay');
+    function openCvModal() {
+      cvModalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCvModal() {
+      cvModalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Fechar modal com tecla ESC
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && cvModalOverlay.classList.contains('active')) {
+        closeCvModal();
+      }
+    });
+  </script>
+</body>
+</html>
